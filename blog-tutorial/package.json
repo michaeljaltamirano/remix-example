@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.0.0",
+    "@michaeljaltamirano/eslint-plugin": "^0.7.0",
     "@remix-run/dev": "^1.3.3",
     "@remix-run/eslint-config": "^1.3.3",
     "@testing-library/cypress": "^8.0.2",
