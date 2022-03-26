@@ -37,8 +37,6 @@ model Note {
   userId String
 }
 
-// Stick this at the bottom of that file:
-
 model Post {
   slug     String @id
   title    String
