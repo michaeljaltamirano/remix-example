@@ -5,12 +5,12 @@ import type { ActionFunction } from "remix";
 import { createNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
 
-type ActionData = {
+interface ActionData {
   errors?: {
     title?: string;
     body?: string;
   };
-};
+}
 
 export const action: ActionFunction = async ({ request }) => {
   const userId = await requireUserId(request);
@@ -44,9 +44,9 @@ export default function NewNotePage() {
   const bodyRef = React.useRef<HTMLTextAreaElement>(null);
 
   React.useEffect(() => {
-    if (actionData?.errors?.title) {
+    if (actionData.errors?.title) {
       titleRef.current?.focus();
-    } else if (actionData?.errors?.body) {
+    } else if (actionData.errors?.body) {
       bodyRef.current?.focus();
     }
   }, [actionData]);
@@ -68,13 +68,13 @@ export default function NewNotePage() {
             ref={titleRef}
             name="title"
             className="flex-1 rounded-md border-2 border-blue-500 px-3 text-lg leading-loose"
-            aria-invalid={actionData?.errors?.title ? true : undefined}
+            aria-invalid={actionData.errors?.title ? true : undefined}
             aria-errormessage={
-              actionData?.errors?.title ? "title-error" : undefined
+              actionData.errors?.title ? "title-error" : undefined
             }
           />
         </label>
-        {actionData?.errors?.title && (
+        {actionData.errors?.title && (
           <div className="pt-1 text-red-700" id="title=error">
             {actionData.errors.title}
           </div>
@@ -89,13 +89,13 @@ export default function NewNotePage() {
             name="body"
             rows={8}
             className="w-full flex-1 rounded-md border-2 border-blue-500 py-2 px-3 text-lg leading-6"
-            aria-invalid={actionData?.errors?.body ? true : undefined}
+            aria-invalid={actionData.errors?.body ? true : undefined}
             aria-errormessage={
-              actionData?.errors?.body ? "body-error" : undefined
+              actionData.errors?.body ? "body-error" : undefined
             }
           />
         </label>
-        {actionData?.errors?.body && (
+        {actionData.errors?.body && (
           <div className="pt-1 text-red-700" id="body=error">
             {actionData.errors.body}
           </div>

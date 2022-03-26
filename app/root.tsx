@@ -22,9 +22,9 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-type LoaderData = {
+interface LoaderData {
   user: Awaited<ReturnType<typeof getUser>>;
-};
+}
 
 export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({

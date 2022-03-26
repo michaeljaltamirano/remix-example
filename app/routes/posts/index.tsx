@@ -1,9 +1,9 @@
 import { Link, json, useLoaderData } from "remix";
 import { getPosts } from "~/models/post.server";
 
-type LoaderData = {
+interface LoaderData {
   posts: Awaited<ReturnType<typeof getPosts>>;
-};
+}
 
 export const loader = async () => {
   return json<LoaderData>({

@@ -52,7 +52,7 @@ function cleanupUser({ email }: { email?: string } = {}) {
     deleteUserByEmail(email);
   } else {
     cy.get("@user").then((user) => {
-      const email = (user as { email?: string }).email;
+      const { email } = user as { email?: string };
       if (email) {
         deleteUserByEmail(email);
       }
