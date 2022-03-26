@@ -4,7 +4,10 @@ import { getPost, type Post } from "~/models/post.server";
 import invariant from "tiny-invariant";
 import { marked } from "marked";
 
-type LoaderData = { post: Post; html: string };
+interface LoaderData {
+  post: Post;
+  html: string;
+}
 
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.slug, `params.slug is required`);
